@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Kotlin-Dojo</string>
+
+    <string name="start">Comenzar</string>
+    <string name="changeJoke">Actualizar</string>
+    <string name="chuckImageDescription">Chuck Norris cartoon</string>
+</resources>
