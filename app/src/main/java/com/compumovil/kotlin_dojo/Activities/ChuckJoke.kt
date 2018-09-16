@@ -2,10 +2,8 @@ package com.compumovil.kotlin_dojo.Activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.compumovil.kotlin_dojo.Model.Joke
 import com.compumovil.kotlin_dojo.R
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_chuck_joke.*
 import okhttp3.*
