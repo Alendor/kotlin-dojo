@@ -15,29 +15,31 @@ class ChuckJoke : AppCompatActivity() {
     val serviceUrl = "https://api.chucknorris.io/jokes/random"
     val request = Request.Builder().url(serviceUrl).build()
     val gson = GsonBuilder().create()
+    var joke = "Presiona el botón"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chuck_joke)
-
-        jokeText.text = runService()
-        changeJokeBtn.setOnClickListener { jokeText.text = runService() }
+        jokeText.text = joke
+        runService()
+        changeJokeBtn.setOnClickListener {
+            jokeText.text = joke
+            runService()
+        }
     }
 
-    fun runService(): String {
-        var text = ""
+    fun runService() {
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call?, response: Response?) {
                 val body = response?.body()?.string()
-                val joke = gson.fromJson(body, Joke::class.java)
-                text = joke.value
+                val jokeObject = gson.fromJson(body, Joke::class.java)
+                joke = jokeObject.value
             }
 
             override fun onFailure(call: Call?, e: IOException?) {
-                text = "Falló la petición"
+                joke = "Falló la petición"
                 e?.printStackTrace()
             }
         })
-        return text
     }
 }
